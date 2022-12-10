@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import './SearchBox.css';
+import store from '../../redux/reducers/store.js';
+import findMovie from '../../redux/actions/action';
+
+
+
+
+
 
 class SearchBox extends Component {
     state = {
-        searchLine: ''
+        searchLine: ""
     }
     searchLineChangeHandler = (e) => {
-        this.setState({ searchLine: e.target.value });
+        this.setState({ searchLine: e.target.value })   
     }
     searchBoxSubmitHandler = (e) => {
         e.preventDefault();
     }
+    searchButton = ()=>{
+        store.dispatch(findMovie(this.state.searchLine));
+    }
+    
+   
+
+
     render() {
         const { searchLine } = this.state;
 
@@ -31,6 +45,7 @@ class SearchBox extends Component {
                         type="submit"
                         className="search-box__form-submit"
                         disabled={!searchLine}
+                        onClick={this.searchButton}
                     >
                         Искать
                     </button>
