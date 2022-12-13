@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ListPage.css';
 
+
 class ListPage extends Component {
     state = {
         movies: [
@@ -9,9 +10,13 @@ class ListPage extends Component {
     }
     componentDidMount() {
         const id = this.props.match.params;
-        console.log(id);
         // TODO: запрос к сервер на получение списка
         // TODO: запросы к серверу по всем imdbID
+
+    fetch(`https://acb-api.algoritmika.org/api/movies/list/${id.id}`)
+    .then(res => res.json())
+    .then(a => console.log(a))
+
     }
     render() { 
         return (
