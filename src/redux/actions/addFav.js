@@ -1,6 +1,6 @@
-export default function findMovie(id) {
+export default function addFav(id) {
     return {
-      type: 'FIND_MOVIE',
+      type: 'ADD_MOVIE',
       
       payload: {
         id: id

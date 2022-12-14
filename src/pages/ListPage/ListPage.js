@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import './ListPage.css';
+import { createStore } from 'redux';
+import reducer from '../../redux/reducers/reducer';
+import sendList from '../../redux/actions/sendList';
+
+let store = createStore(reducer);
 
 class ListPage extends Component {
     state = {
@@ -10,6 +15,10 @@ class ListPage extends Component {
     componentDidMount() {
         const id = this.props.match.params;
         console.log(id);
+        console.log(store.getState())
+        store.dispatch(sendList('lol'));
+        console.log(store.getState());
+        
         // TODO: запрос к сервер на получение списка
         // TODO: запросы к серверу по всем imdbID
     }
