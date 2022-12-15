@@ -1,9 +1,10 @@
-export default function addFav(id) {
+export default function addFav(id,name) {
     return {
       type: 'ADD_MOVIE',
       
       payload: {
-        id: id
+        id: id,
+        name: name
       }
     }
   }

@@ -8,7 +8,6 @@ import './Favorites.css';
 let count = 0;
 
 // вспомогательные переменные
-
 let serverObj = {
     title: null,
     movies: []
@@ -19,19 +18,25 @@ let k;
 
 const changeText = (str) => {
     let arr = document.querySelectorAll('.movie-item__title');
-
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].innerHTML.includes(str)) arr[i].nextElementSibling.innerHTML = 'Добавить в список'
-
-
     }
 }
 
 
 class Favorites extends Component {
+
+    CheckForButton(e){
+        if(e.target.value.length !== 0 && document.querySelectorAll('.item').length !==0){
+            this.setState({disabled: false})
+        }
+        else  this.setState({disabled: true})
+    }
     componentDidMount() {
         store.subscribe(() => {
-            this.setState({ movies: store.getState().fav })
+            this.setState({ movies: store.getState().fav,
+                            disabled: store.getState().button})
+            
             serverObj.title = document.querySelector('.favorites__name').value;
 
             for (let i = 0; i < this.state.movies.length; i++) {
@@ -58,16 +63,17 @@ class Favorites extends Component {
     render() {
         return (
             <div className="favorites">
-                <input placeholder="Мой список" className="favorites__name"  />
+                <input placeholder="Мой список" className="favorites__name"  onChange = {(e) => this.CheckForButton(e)}/>
                 <div className="favorites__list">
                     {this.state.movies.map((item) => {
                         return <div className='item'> <p key={item.imdbID}>{item.Title} ({item.Year})</p>
                             <button className="item_but" onClick={() => {
                                 {
                                     k = item.imdbID
-                                    if (document.querySelectorAll('.item').length == 0) this.setState({ disabled: true })
                                     changeText(`${item.Title}`)
+
                                     store.dispatch(remove(k))
+
                                     this.setState({
                                         movies: this.state.movies.filter(item =>
                                             item.imdbID !== k)

@@ -4,20 +4,7 @@ import './Movies.css';
 import { connect } from 'react-redux';
 import store from '../../redux/reducers/store';
 
-class Movies extends Component {
-   
-
-    // componentDidMount() {
-    //     setTimeout(() => {
-    //         store.subscribe(() => {
-    //             setTimeout(()=>{
-    //             this.setState({
-    //               movies: store.getState().movies
-    //             }) 
-    //             },1000)
-    //       }, 2000)})}
-
-
+class Movies extends Component {   
     render() { 
         return ( 
             <ul className="movies">

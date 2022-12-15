@@ -93,14 +93,29 @@
     font-size: 20px;
     }
     .movie-item__poster {
-        height: 150px;
-        margin-right: 21px;
+        height: 200px;
+        width: 160px;
+        margin-left: 66px;
+        margin-bottom: 10px;
+
     }
     
     .movie-item__title {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 8px;
+        margin-left: 66px;
         margin-bottom: 14px;
+
+    }
+    .movie-item {
+        padding: 30px;
+        background-color: #FFEEDB;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .movie-item__add-button{
+        margin-left: 66px;
     }
 }
 

@@ -19,7 +19,7 @@ class ListPage extends Component {
                     {this.props.movies.map((item) => {
                         return (
                             <li key={item.imdbID}>
-                                <a href="https://www.imdb.com/title/tt0068646/" target="_blank">{item.Title} ({item.Year})</a>
+                                <a href={`https://www.imdb.com/title/${item.imdbID}/`} target="_blank">{item.Title} ({item.Year})</a>
                             </li>
                         );
                     })}
@@ -30,6 +30,7 @@ class ListPage extends Component {
 }
 
 const mapStateToProps =((state) => {
+
     return {
         movies: state.fav,
         title: state.listName
