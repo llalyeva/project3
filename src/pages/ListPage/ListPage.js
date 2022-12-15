@@ -3,34 +3,23 @@ import './ListPage.css';
 import { createStore } from 'redux';
 import reducer from '../../redux/reducers/reducer';
 import sendList from '../../redux/actions/sendList';
-
-let store = createStore(reducer);
-
+import store from '../../redux/reducers/store'
+import { connect } from 'react-redux';
 class ListPage extends Component {
-    state = {
-        movies: [
-            { title: 'The Godfather', year: 1972, imdbID: 'tt0068646' }
-        ]
-    }
+    
     componentDidMount() {
-        const id = this.props.match.params;
-        console.log(id);
-        console.log(store.getState())
-        store.dispatch(sendList('lol'));
-        console.log(store.getState());
-        
-        // TODO: запрос к сервер на получение списка
-        // TODO: запросы к серверу по всем imdbID
+        // const id = this.props.match.params;
+        // console.log(id);
     }
     render() { 
         return (
             <div className="list-page">
                 <h1 className="list-page__title">Мой список</h1>
                 <ul>
-                    {this.state.movies.map((item) => {
+                    {this.props.movies.map((item) => {
                         return (
                             <li key={item.imdbID}>
-                                <a href="https://www.imdb.com/title/tt0068646/" target="_blank">{item.title} ({item.year})</a>
+                                <a href="https://www.imdb.com/title/tt0068646/" target="_blank">{item.Title} ({item.Year})</a>
                             </li>
                         );
                     })}
@@ -39,5 +28,11 @@ class ListPage extends Component {
         );
     }
 }
- 
-export default ListPage;
+
+const mapStateToProps = ((state) => {
+    return {
+        movies: state.movies
+    }
+})
+
+export default connect(mapStateToProps)(ListPage);

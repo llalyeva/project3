@@ -1,5 +1,4 @@
 
-
 let newObjects=[];
 let list =[];
 
@@ -81,8 +80,9 @@ const initialState = {
    })
    setTimeout(() => {
             state.movies = [...newObjects]
+            
           }, 1000)
-  return state;
+  return state
     }
 
  if(action.type === 'ADD_MOVIE'){
@@ -97,13 +97,15 @@ const initialState = {
     break;}
     }}
     state.fav = list
-    return state   
+    return {...state}
+      
 }
 
 if(action.type === 'REMOVE'){
     list = [... list.filter(item => item.imdbID !== action.payload.id)]
-    state.fav = list
-    return state
+    
+    return {...state,
+        list}
 }
   
 if(action.type === 'SEND_LIST'){
