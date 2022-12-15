@@ -1,9 +1,9 @@
-export default function findMovie(id) {
-    return {
-      type: 'FIND_MOVIE',
-      
-      payload: {
-        id: id
-      }
+export default function findMovie(movies) {
+  return {
+    type: 'FIND_MOVIE',
+    payload: {
+      movies: movies
     }
+
   }
+}

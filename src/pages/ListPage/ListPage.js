@@ -8,13 +8,13 @@ import { connect } from 'react-redux';
 class ListPage extends Component {
     
     componentDidMount() {
-        // const id = this.props.match.params;
-        // console.log(id);
+        const id = this.props.match.params;
+        console.log(id);
     }
     render() { 
         return (
             <div className="list-page">
-                <h1 className="list-page__title">Мой список</h1>
+                <h1 className="list-page__title">{this.props.title}</h1>
                 <ul>
                     {this.props.movies.map((item) => {
                         return (
@@ -29,9 +29,11 @@ class ListPage extends Component {
     }
 }
 
-const mapStateToProps = ((state) => {
+const mapStateToProps =((state) => {
     return {
-        movies: state.movies
+        movies: state.fav,
+        title: state.listName
+
     }
 })
 

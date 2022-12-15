@@ -17,8 +17,19 @@ class SearchBox extends Component {
         e.preventDefault();
     }
     searchButton = ()=>{
-        store.dispatch(findMovie(document.querySelector('.search-box__form-input').value));
-        
+        var movieArr
+        const asyncFetch = async () => {
+            await fetch(`http://www.omdbapi.com/?s=${document.querySelector('.search-box__form-input').value}&apikey=28f6807c`)
+              .then(res => { return res.json() })
+              .then((data) => {
+                movieArr = [...data.Search];
+                console.log(movieArr);
+              })
+              
+              store.dispatch(findMovie(movieArr));
+              
+            }
+            asyncFetch();
     }
 
     render() {
