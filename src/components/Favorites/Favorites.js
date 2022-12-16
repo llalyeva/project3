@@ -71,9 +71,8 @@ class Favorites extends Component {
                                 {
                                     k = item.imdbID
                                     changeText(`${item.Title}`)
-
                                     store.dispatch(remove(k))
-
+                                  if(document.querySelectorAll('.item').length == 1) this.setState({disabled: true})
                                     this.setState({
                                         movies: this.state.movies.filter(item =>
                                             item.imdbID !== k)

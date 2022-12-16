@@ -30,7 +30,10 @@ function reducer(state = initialState, action) {
         }
 
         state.fav = list
+        console.log(action.payload.name.length)
+
         if(action.payload.name.length !== 0) state.button = false;
+        else state.button = true
         console.log(state)
         return { ...state }
 

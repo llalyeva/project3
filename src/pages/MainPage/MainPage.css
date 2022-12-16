@@ -61,6 +61,9 @@
     .main-page__favorites{
         width: 80%;
     }
+    .favorites{
+        margin-bottom: 20px;
+    }
     .movie-item__title{
         font-size: 10px;
     }
@@ -116,6 +119,12 @@
     }
     .movie-item__add-button{
         margin-left: 66px;
+    }
+    .main-page__content{
+        position: static;
+    }
+    .main-page__movies{
+        position: static;
     }
 }
 
